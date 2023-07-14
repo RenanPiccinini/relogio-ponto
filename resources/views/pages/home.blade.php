@@ -144,6 +144,11 @@
         </section>
         <!-- End slider section -->
 
+        {{-- <form action="{{ route('pagamento-boleto') }}" method="POST">
+        @csrf
+            <button type="submit">BOLETO</button>
+        </form> --}}
+
         <!-- Start shipping section -->
         <section class="shipping__section shipping__style2 section--padding color-scheme-2">
             <div class="container">

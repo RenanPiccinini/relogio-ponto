@@ -26,3 +26,4 @@ Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
 
 //Rotas de pagamento
 Route::post('/pagamento-pix', [PagamentosController::class, 'pix'])->name('pagamento-pix');
+Route::post('/pagamento-boleto', [PagamentosController::class, 'boleto'])->name('pagamento-boleto');
