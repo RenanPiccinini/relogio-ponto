@@ -71,7 +71,7 @@ class PagamentosController extends Controller
                 }',
                 CURLOPT_HTTPHEADER => array(
                     'Content-Type: application/json',
-                    'x-api-key:' . env('SAFE2PAY_TOKEN') . ''
+                    'x-api-key:' . env('SAFE2PAY_TOKEN_PIX') . ''
                 ),
             ));
 
@@ -201,7 +201,7 @@ class PagamentosController extends Controller
                 }',
                 CURLOPT_HTTPHEADER => array(
                     'Content-Type: application/json',
-                    'x-api-key: 598F7276A4CF4DF19E26834BD08C477C'
+                    'x-api-key:' . env('SAFE2PAY_TOKEN') . ''
                 ),
             ));
 
@@ -243,6 +243,107 @@ class PagamentosController extends Controller
 
             return redirect()->back()->withErrors([
                 'error' => trans('Não foi possível gerar o Boleto, tente novamente mais tarde.')
+            ])->withInput();
+        }
+
+    }
+
+    public function credito(Request $request)
+    {
+        try {
+
+            $curl = curl_init();
+
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => "https://payment.safe2pay.com.br/v2/Payment",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS => '{
+                    "IsSandbox": true,
+                    "Application": "Aplicação de teste",
+                    "Vendor": "João da Silva",
+                    "CallbackUrl": "https://callbacks.exemplo.com.br/api/Notify",
+                    "PaymentMethod": "2",
+                    "Customer": {
+                        "Name": "João da silva",
+                        "Identity": "18978393080",
+                        "Phone": "51999999999",
+                        "Email": "safe2pay@safe2pay.com.br",
+                        "Address": {
+                            "ZipCode": "90670090",
+                            "Street": "Logradouro",
+                            "Number": "123",
+                            "Complement": "Complemento",
+                            "District": "Higienopolis",
+                            "CityName": "Porto Alegre",
+                            "StateInitials": "RS",
+                            "CountryName": "Brasil"
+                        }
+                    },
+                    "Products": [
+                        {
+                            "Code": "001",
+                            "Description": "Teste 1",
+                            "UnitPrice": 500,
+                            "Quantity": 1
+                        }
+                    ],
+                    "PaymentObject": {
+                        "Holder": "João da Silva",
+                        "CardNumber": "5105 1051 0510 5100",
+                        "ExpirationDate": "12/2025",
+                        "SecurityCode": "241",
+                            "InstallmentQuantity": 05
+                    }
+                }',
+                CURLOPT_HTTPHEADER => array(
+                    'Content-Type: application/json',
+                    'x-api-key:' . env('SAFE2PAY_TOKEN') . ''
+                ),
+            ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+
+            //var_dump(curl_error($curl));
+
+            $dataResponse = json_decode($response);
+            //dd($dataResponse);
+
+            if (isset($dataResponse->status)) {
+                if ($dataResponse->status == 401 || $dataResponse->status == 400) {
+                    return redirect()->back()->withErrors([
+                        'error' => trans('Não foi possível realizar o pagamento, tente novamente mais tarde.')
+                    ])->withInput();
+                }
+            }
+
+            //pega o idtransaction e salva na variavel
+            $idTransaction = $dataResponse->ResponseDetail->IdTransaction;
+
+            $credito = $dataResponse->ResponseDetail->BankSlipUrl;
+
+            return new RedirectResponse($credito);
+
+            // return view('dashboard.credito', [
+            //     'credito' => $credito,
+            // ]);
+
+        } catch (\Exception $e) {
+
+            // Tratamento da exceção
+            // echo "Ocorreu um erro: " . $e->getMessage();
+
+            return redirect()->back()->withErrors([
+                'error' => trans('Não foi possível realizar o pagamento, tente novamente mais tarde.')
             ])->withInput();
         }
 
