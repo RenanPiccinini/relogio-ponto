@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8" />
@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/site/img/favicon.ico') }}">>
@@ -20,8 +24,8 @@
     'resources/assets/admin/libs/jquery/jquery.min.js',
     'resources/assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js',
     'resources/assets/admin/libs/metismenu/metisMenu.min.js',
-    'resources/assets/admin/libs/simplebar/simplebar.min.j',
-    'resources/assets/admin/libs/node-waves/waves.min.js',
+    'resources/assets/admin/libs/simplebar/simplebar.min.js',
+    //'resources/assets/admin/libs/node-waves/waves.min.js',
     'resources/assets/admin/libs/morris.js/morris.min.js',
     'resources/assets/admin/libs/raphael/raphael.min.js',
     'resources/assets/admin/js/pages/dashboard.init.js',
@@ -73,7 +77,7 @@
                     </a>
                 </div>
 
-                <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
+                <button type="button" class="btn btn-sm px-3 font-size-24 header-item" id="vertical-menu-btn">
                     <i class="mdi mdi-menu"></i>
                 </button>
 
@@ -93,25 +97,21 @@
                 </div>
             </div>
 
-            <div class="d-flex">
-
-                <div class="dropdown d-inline-block ms-2">
-                    <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="{{ asset('assets/admin/images/users/gustavo.png') }}"
-                            alt="Header Avatar">
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end">
-
-                        <a class="dropdown-item" href="#"><i class="dripicons-user font-size-16 align-middle me-2"></i>
-                            Profile</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="dripicons-exit font-size-16 align-middle me-2"></i>
-                            Logout</a>
-                    </div>
+            <div class="dropdown d-inline-block ms-2">
+                <button type="button" class="btn header-item" id="page-header-user-dropdown"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle header-profile-user" src="{{ asset('assets/admin/images/users/gustavo.png') }}"
+                        alt="Prifile">
+                </button>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <a class="dropdown-item" href="#"><i class="dripicons-user font-size-16 align-middle me-2"></i>
+                        Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item"  href="{{ route('logout') }}"><i class="dripicons-exit font-size-16 align-middle me-2"></i>
+                        Logout</a>
                 </div>
-
             </div>
+
         </div>
     </header>
 
@@ -127,21 +127,21 @@
                     <li class="menu-title">Utilidades</li>
 
                     <li>
-                        <a href="index.html" class="waves-effect">
+                        <a href="index.html">
                             <i class="dripicons-device-desktop"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="users.html" class="waves-effect">
+                        <a href="users.html">
                             <i class="dripicons-user"></i>
                             <span>Users</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <a href="javascript: void(0);" class="has-arrow">
                             <i class="dripicons-mail"></i>
                             <span> Email </span>
                         </a>
@@ -153,14 +153,14 @@
                     </li>
 
                     <li>
-                        <a href="categorias.html" class=" waves-effect">
+                        <a href="categorias.html" >
                             <i class="dripicons-blog"></i>
                             <span>Categorias</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <a href="javascript: void(0);" class="has-arrow">
                             <i class="dripicons-card"></i>
                             <span> Subcategorias</span>
                         </a>
@@ -174,21 +174,21 @@
                     <li class="menu-title">Produtos</li>
 
                     <li>
-                        <a href="produto1.html" class=" waves-effect">
+                        <a href="produto1.html">
                             <i class="dripicons-suitcase"></i>
                             <span>Produto 1</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="produto2.html" class=" waves-effect">
+                        <a href="produto2.html">
                             <i class="dripicons-suitcase"></i>
                             <span>Produto 2</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="produto3.html" class=" waves-effect">
+                        <a href="produto3.html">
                             <i class="dripicons-suitcase"></i>
                             <span>Produto 3</span>
                         </a>

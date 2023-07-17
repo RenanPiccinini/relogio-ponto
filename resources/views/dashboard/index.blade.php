@@ -2,9 +2,6 @@
 
 @section('content')
 
-    <!-- ============================================================== -->
-    <!-- Start right Content here -->
-    <!-- ============================================================== -->
     <div class="main-content">
         <div class="page-content">
 
@@ -44,9 +41,6 @@
     </div>
     <!-- end main content-->
 
-<!-- END layout-wrapper -->
-
-<!-- Right Sidebar -->
 
 {{-- LAYOUTS CANTO DIREITO --}}
 <div class="right-bar">
