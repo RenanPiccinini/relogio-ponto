@@ -127,20 +127,20 @@
                     <li class="menu-title">Utilidades</li>
 
                     <li>
-                        <a href="index.html">
+                        <a href="{{ route('admin') }}">
                             <i class="dripicons-device-desktop"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
 
-                    <li>
+                    {{-- <li>
                         <a href="users.html">
                             <i class="dripicons-user"></i>
                             <span>Users</span>
                         </a>
-                    </li>
+                    </li> --}}
 
-                    <li>
+                    {{-- <li>
                         <a href="javascript: void(0);" class="has-arrow">
                             <i class="dripicons-mail"></i>
                             <span> Email </span>
@@ -150,49 +150,29 @@
                             <li><a href="email-read.html">Email Read</a></li>
                             <li><a href="email-compose.html">Email Compose</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                     <li>
-                        <a href="categorias.html" >
+                        <a href="{{ route('categorias') }}" >
                             <i class="dripicons-blog"></i>
                             <span>Categorias</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="javascript: void(0);" class="has-arrow">
+                        <a href="{{ route('subcategorias') }}" >
                             <i class="dripicons-card"></i>
-                            <span> Subcategorias</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="contacts-grid.html">Subcategoria 1</a></li>
-                            <li><a href="contacts-list.html">Subcategorias 2</a></li>
-                            <li><a href="contacts-profile.html">Subcategorias 3</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="menu-title">Produtos</li>
-
-                    <li>
-                        <a href="produto1.html">
-                            <i class="dripicons-suitcase"></i>
-                            <span>Produto 1</span>
+                            <span>Subcategorias</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="produto2.html">
+                        <a href="{{ route('produtos') }}">
                             <i class="dripicons-suitcase"></i>
-                            <span>Produto 2</span>
+                            <span>Produtos</span>
                         </a>
                     </li>
 
-                    <li>
-                        <a href="produto3.html">
-                            <i class="dripicons-suitcase"></i>
-                            <span>Produto 3</span>
-                        </a>
-                    </li>
 
                 </ul>
             </div>

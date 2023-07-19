@@ -16,14 +16,15 @@ return new class extends Migration
             $table->string('nome', 255);
             $table->string('descricao', 255);
             $table->string('preco', 255);
-            $table->string('categoria_id', 255);
-            $table->string('subcategoria_id', 255);
+            $table->string('categoria', 255)->nullable();
+            $table->string('subcategoria', 255)->nullable();
             $table->string('marca', 255);
             $table->string('estoque', 255);
             $table->string('tamanho', 255);
             $table->string('cor', 255);
             $table->text('imagem');
             $table->timestamps();
+
         });
     }
 
