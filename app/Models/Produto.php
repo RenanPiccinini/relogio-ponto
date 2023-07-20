@@ -20,5 +20,10 @@ class Produto extends Model
         'tamanho',
         'cor',
         'imagem',
+        'imagem2',
+        'imagem3',
+        'imagem4',
+        'imagem5',
+        'imagem6',
     ];
 }

@@ -28,7 +28,7 @@
                       <th scope="col">Estoque</th>
                       <th scope="col">Tamanho</th>
                       <th scope="col">Cor</th>
-                      <th scope="col">Imagem</th>
+                      <th scope="col">Ver detalhes</th>
                       <th scope="col">Editar</th>
                       <th scope="col">Excluir</th>
                     </tr>
@@ -45,9 +45,11 @@
                         <td>{{ $produto->estoque }}</td>
                         <td>{{ $produto->tamanho }}</td>
                         <td>{{ $produto->cor }}</td>
-                        <td>
+                        {{-- <td>
                             <img src="{{ env('APP_URL') }}/storage/imagens-produtos/{{ $produto->imagem }}" alt="" width="50px">
-                        </td>
+                        </td> --}}
+
+                        <td><a href="{{ route('detalhes-produto', $produto->id) }}" class="btn btn-success">Ver</a></td>
 
                         <td>
                             <a class="btn btn-primary" href="{{ route('editar-produto', $produto->id) }}">

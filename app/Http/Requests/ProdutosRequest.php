@@ -47,7 +47,7 @@ class ProdutosRequest extends FormRequest
             'estoque.required' => 'Campo estoque é obrigatório',
             'tamanho.required' => 'Campo tamanho é obrigatório',
             'cor.required' => 'Campo cor é obrigatório',
-            'imagem.required' => 'Campo imagem é obrigatório',
+            'imagem.required' => 'Campo imagem 1 é obrigatório',
         ];
     }
 }

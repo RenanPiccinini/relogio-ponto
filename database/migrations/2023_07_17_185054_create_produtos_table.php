@@ -23,6 +23,11 @@ return new class extends Migration
             $table->string('tamanho', 255);
             $table->string('cor', 255);
             $table->text('imagem');
+            $table->text('imagem2');
+            $table->text('imagem3');
+            $table->text('imagem4');
+            $table->text('imagem5');
+            $table->text('imagem6');
             $table->timestamps();
 
         });

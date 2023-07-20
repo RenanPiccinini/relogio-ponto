@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/produtos', [LojaController::class, 'produtoIndex'])->name('produtos');
     Route::get('/criar-produto', [LojaController::class, 'criarProduto'])->name('criar-produto');
     Route::post('/criar-produto-post', [LojaController::class, 'criarProdutoPost'])->name('criar-produto-post');
+    Route::get('/detalhes-produto/{id}', [LojaController::class, 'detalhesProduto'])->name('detalhes-produto');
     Route::get('/editar-produto/{id}', [LojaController::class, 'editarProduto'])->name('editar-produto');
     Route::put('/editar-produto-post/{id}', [LojaController::class, 'editarProdutoPost'])->name('editar-produto-post');
     Route::delete('/deletar-produto/{id}', [LojaController::class, 'deletarProduto'])->name('deletar-produto');
@@ -46,4 +47,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/editar-subcategoria/{id}', [LojaController::class, 'editarSubcategoria'])->name('editar-subcategoria');
     Route::put('/editar-subcategoria-post/{id}', [LojaController::class, 'editarSubcategoriaPost'])->name('editar-subcategoria-post');
     Route::delete('/deletar-subcategoria/{id}', [LojaController::class, 'deletarSubcategoria'])->name('deletar-subcategoria');
+
+    Route::delete('/produto/{id}/excluir-imagem/{numeroImagem}', [LojaController::class, 'excluirImagem'])->name('produto.excluir-imagem');
+
 });
