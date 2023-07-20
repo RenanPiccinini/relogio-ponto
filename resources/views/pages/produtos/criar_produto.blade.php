@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group mt-2">
                     <label for="categoria">Categoria</label>
                     <select id="categoria" class="form-control" name="categoria">
                         @foreach ($categorias as $categoria)
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group mt-2">
                     <label for="categoria">Subcategoria</label>
                     <select id="categoria" class="form-control" name="subcategoria">
                         @foreach ($subcategorias as $subcategoria)
@@ -77,30 +77,67 @@
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group mt-2">
                       <label for="estoque">Estoque</label>
                       <input type="text" class="form-control" id="estoque" name="estoque" value="{{ old('estoque') }}">
                     </div>
                 </div>
 
                   <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group mt-2">
                       <label for="tamanho">Tamanho</label>
                       <input type="text" class="form-control" id="tamanho" name="tamanho" value="{{ old('tamanho') }}">
                     </div>
                 </div>
 
                   <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group mt-2 mb-3">
                       <label for="cor">Cor</label>
                       <input type="text" class="form-control" id="cor" name="cor" value="{{ old('cor') }}">
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="form-group">
-                      <label for="imagem">Imagem</label>
+                <h5>Adicionar imagens do produto</h5>
+
+                <div class="col-md-4">
+                    <div class="form-group mt-2">
+                      <label for="imagem">Imagem 1</label>
                       <input type="file" class="form-control" id="imagem" name="imagem">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group mt-2">
+                      <label for="imagem2">Imagem 2</label>
+                      <input type="file" class="form-control" id="imagem2" name="imagem2">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group mt-2">
+                      <label for="imagem3">Imagem 3</label>
+                      <input type="file" class="form-control" id="imagem3" name="imagem3">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group mt-2">
+                      <label for="imagem4">Imagem 4</label>
+                      <input type="file" class="form-control" id="imagem4" name="imagem4">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group mt-2">
+                      <label for="imagem5">Imagem 5</label>
+                      <input type="file" class="form-control" id="imagem5" name="imagem5">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group mt-2">
+                      <label for="imagem6">Imagem 6</label>
+                      <input type="file" class="form-control" id="imagem6" name="imagem6">
                     </div>
                 </div>
             </div>

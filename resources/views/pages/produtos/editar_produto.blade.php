@@ -12,6 +12,12 @@
             </div>
         @endif
 
+        @if(session('message'))
+            <div class="alert alert-success col-md-3" id="alert" role="alert">
+                {{ session('message') }}
+            </div>
+        @endif
+
         <form action="{{ route('editar-produto-post', $produto->id) }}" method="POST" class="col-md-12" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -89,19 +95,33 @@
                 </div>
 
                   <div class="col-md-3">
-                    <div class="form-group mt-2">
+                    <div class="form-group mt-2 mb-4">
                       <label for="cor">Cor</label>
                       <input type="text" class="form-control" id="cor" name="cor" value="{{ $produto->cor }}">
                     </div>
                 </div>
 
+                <h5>Substituir Imagens (Se não enviar será mantido a imagem anterior)</h5>
+
                 <div class="col-md-3">
                     <div class="form-group mt-2">
-                      <label for="imagem">Imagem(Se não enviar será mantido a imagem anterior)</label>
+                      <label for="imagem">Imagem 1</label>
+                      <img src="{{ env('APP_URL') }}/storage/imagens-produtos/{{ $produto->imagem }}" alt="" width="50px" class="mb-2">
                       <input type="file" class="form-control" id="imagem" name="imagem">
                     </div>
                 </div>
-            </div>
+
+                @foreach (range(2, 6) as $numeroImagem)
+                    <div class="form-group mt-2 col-md-3">
+                        @if ($produto->{'imagem' . $numeroImagem})
+                            Imagem {{$numeroImagem}}
+                            <img src="{{ env('APP_URL') }}/storage/imagens-produtos/{{ $produto->{'imagem' . $numeroImagem} }}" alt="Imagem {{ $numeroImagem }}" width="50px">
+                            <button type="button" class="btn btn-danger btn-sm" onclick="excluirImagem({{ $produto->id }}, {{ $numeroImagem }})">Excluir</button>
+                        @endif
+                        <input type="file" class="form-control" id="imagem{{ $numeroImagem }}" name="imagem{{ $numeroImagem }}">
+                    </div>
+                @endforeach
+        </div>
 
             <button type="submit" class="btn btn-success mt-3">Salvar</button>
         </form>
@@ -120,3 +140,25 @@ setTimeout(function() {
 }, 4000);
 
 </script>
+
+<script>
+    function excluirImagem(produtoId, numeroImagem) {
+        if (confirm('Tem certeza que deseja excluir esta imagem?')) {
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = `/produto/${produtoId}/excluir-imagem/${numeroImagem}`;
+            const token = document.createElement('input');
+            token.type = 'hidden';
+            token.name = '_token';
+            token.value = '{{ csrf_token() }}';
+            form.appendChild(token);
+            const method = document.createElement('input');
+            method.type = 'hidden';
+            method.name = '_method';
+            method.value = 'DELETE';
+            form.appendChild(method);
+            document.body.appendChild(form);
+            form.submit();
+        }
+    }
+    </script>

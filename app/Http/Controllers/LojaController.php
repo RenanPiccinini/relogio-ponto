@@ -10,6 +10,7 @@ use App\Models\Produto;
 use App\Models\Subcategoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class LojaController extends Controller
 {
@@ -22,7 +23,7 @@ class LojaController extends Controller
     {
         $produtos = Produto::all();
 
-        return view('pages.produtos', [
+        return view('pages.produtos.produtos', [
             'produtos' => $produtos
         ]);
     }
@@ -32,7 +33,7 @@ class LojaController extends Controller
         $categorias = Categoria::all();
         $subcategorias = Subcategoria::all();
 
-        return view('pages.criar_produto', [
+        return view('pages.produtos.criar_produto', [
             'categorias' => $categorias,
             'subcategorias' => $subcategorias
         ]);
@@ -42,11 +43,41 @@ class LojaController extends Controller
     {
         $cadastroFoto = $request->all();
 
-       if($request->file('imagem')){
-           $imagem = $this->uploadFile($request, 'imagens-produtos', 'imagem');
+        if($request->file('imagem')){
+            $imagem = $this->uploadFile($request, 'imagens-produtos', 'imagem');
 
-           $cadastroFoto["imagem"] = $imagem;
-       }
+            $cadastroFoto["imagem"] = $imagem;
+        }
+
+        if($request->file('imagem2')){
+            $imagem2 = $this->uploadFile($request, 'imagens-produtos', 'imagem2');
+
+            $cadastroFoto["imagem2"] = $imagem2;
+        }
+
+        if($request->file('imagem3')){
+            $imagem3 = $this->uploadFile($request, 'imagens-produtos', 'imagem3');
+
+            $cadastroFoto["imagem3"] = $imagem3;
+        }
+
+        if($request->file('imagem4')){
+            $imagem4 = $this->uploadFile($request, 'imagens-produtos', 'imagem4');
+
+            $cadastroFoto["imagem4"] = $imagem4;
+        }
+
+        if($request->file('imagem5')){
+            $imagem5 = $this->uploadFile($request, 'imagens-produtos', 'imagem5');
+
+            $cadastroFoto["imagem5"] = $imagem5;
+        }
+
+        if($request->file('imagem6')){
+            $imagem6 = $this->uploadFile($request, 'imagens-produtos', 'imagem6');
+
+            $cadastroFoto["imagem6"] = $imagem6;
+        }
 
         $produto = new Produto;
         $produto->nome = $request->nome;
@@ -59,6 +90,21 @@ class LojaController extends Controller
         $produto->tamanho = $request->tamanho;
         $produto->cor = $request->cor;
         $produto->imagem = $imagem;
+        if($request->imagem2){
+            $produto->imagem2 = $imagem2;
+        }
+        if($request->imagem3){
+            $produto->imagem3 = $imagem3;
+        }
+        if($request->imagem4){
+            $produto->imagem4 = $imagem4;
+        }
+        if($request->imagem5){
+            $produto->imagem5 = $imagem5;
+        }
+        if($request->imagem6){
+            $produto->imagem6 = $imagem6;
+        }
 
         if (Produto::where('nome', $produto->nome)->exists()) {
             return redirect()->back()->with('error', 'Já existe uma produto com esse nome');
@@ -69,13 +115,22 @@ class LojaController extends Controller
         return redirect()->route('produtos')->with('message', 'Produto criado com sucesso');
     }
 
+    public function detalhesProduto($id)
+    {
+        $produto = Produto::find($id);
+
+        return view('pages.produtos.detalhes_produto', [
+            'produto' => $produto
+        ]);
+    }
+
     public function editarProduto($id)
     {
         $produto = Produto::find($id);
         $categorias = Categoria::all();
         $subcategorias = Subcategoria::all();
 
-        return view('pages.editar_produto', [
+        return view('pages.produtos.editar_produto', [
             'produto' => $produto,
             'categorias' => $categorias,
             'subcategorias' => $subcategorias
@@ -85,15 +140,70 @@ class LojaController extends Controller
     public function editarProdutoPost(Request $request)
     {
         $cadastroFoto = $request->all();
+        $id = $request->input('id');
+        $produto = Produto::find($id);
 
        if($request->file('imagem')){
+            if(Storage::exists('public/imagens-produtos/' . $produto->imagem)){
+                Storage::delete('public/imagens-produtos/' . $produto->imagem);
+            }
 
-           $imagem = $this->uploadFile($request, 'imagens-produtos', 'imagem');
+            $imagem = $this->uploadFile($request, 'imagens-produtos', 'imagem');
 
-           $cadastroFoto["imagem"] = $imagem;
-       }
+            $cadastroFoto["imagem"] = $imagem;
+        }
 
-        $id = $request->input('id');
+        if($request->file('imagem2')){
+            if(Storage::exists('public/imagens-produtos/' . $produto->imagem2)){
+                Storage::delete('public/imagens-produtos/' . $produto->imagem2);
+            }
+
+            $imagem2 = $this->uploadFile($request, 'imagens-produtos', 'imagem2');
+
+            $cadastroFoto["imagem2"] = $imagem2;
+        }
+
+        if($request->file('imagem3')){
+            if(Storage::exists('public/imagens-produtos/' . $produto->imagem3)){
+                Storage::delete('public/imagens-produtos/' . $produto->imagem3);
+            }
+
+            $imagem3 = $this->uploadFile($request, 'imagens-produtos', 'imagem3');
+
+            $cadastroFoto["imagem3"] = $imagem3;
+        }
+
+        if($request->file('imagem4')){
+            if(Storage::exists('public/imagens-produtos/' . $produto->imagem4)){
+                Storage::delete('public/imagens-produtos/' . $produto->imagem4);
+            }
+
+            $imagem4 = $this->uploadFile($request, 'imagens-produtos', 'imagem4');
+
+            $cadastroFoto["imagem4"] = $imagem4;
+        }
+
+        if($request->file('imagem5')){
+            if(Storage::exists('public/imagens-produtos/' . $produto->imagem5)){
+                Storage::delete('public/imagens-produtos/' . $produto->imagem5);
+            }
+
+            $imagem5 = $this->uploadFile($request, 'imagens-produtos', 'imagem5');
+
+            $cadastroFoto["imagem5"] = $imagem5;
+        }
+
+        if($request->file('imagem6')){
+            if(Storage::exists('public/imagens-produtos/' . $produto->imagem6)){
+                Storage::delete('public/imagens-produtos/' . $produto->imagem6);
+            }
+
+            $imagem6 = $this->uploadFile($request, 'imagens-produtos', 'imagem6');
+
+            $cadastroFoto["imagem6"] = $imagem6;
+        }
+
+
         $produto = Produto::find($id);
 
         $produto->nome = $request->nome;
@@ -108,6 +218,21 @@ class LojaController extends Controller
         if($request->imagem){
             $produto->imagem = $imagem;
         }
+        if($request->imagem2){
+            $produto->imagem2 = $imagem2;
+        }
+        if($request->imagem3){
+            $produto->imagem3 = $imagem3;
+        }
+        if($request->imagem4){
+            $produto->imagem4 = $imagem4;
+        }
+        if($request->imagem5){
+            $produto->imagem5 = $imagem5;
+        }
+        if($request->imagem6){
+            $produto->imagem6 = $imagem6;
+        }
         $produto->update();
 
         return redirect()->route('produtos')->with('message', 'Produto editado com sucesso');
@@ -116,6 +241,25 @@ class LojaController extends Controller
     public function deletarProduto($id)
     {
         $produto = Produto::find($id);
+
+        if(Storage::exists('public/imagens-produtos/' . $produto->imagem)){
+            Storage::delete('public/imagens-produtos/' . $produto->imagem);
+        }
+        if(Storage::exists('public/imagens-produtos/' . $produto->imagem2)){
+            Storage::delete('public/imagens-produtos/' . $produto->imagem2);
+        }
+        if(Storage::exists('public/imagens-produtos/' . $produto->imagem3)){
+            Storage::delete('public/imagens-produtos/' . $produto->imagem3);
+        }
+        if(Storage::exists('public/imagens-produtos/' . $produto->imagem4)){
+            Storage::delete('public/imagens-produtos/' . $produto->imagem4);
+        }
+        if(Storage::exists('public/imagens-produtos/' . $produto->imagem5)){
+            Storage::delete('public/imagens-produtos/' . $produto->imagem5);
+        }
+        if(Storage::exists('public/imagens-produtos/' . $produto->imagem6)){
+            Storage::delete('public/imagens-produtos/' . $produto->imagem6);
+        }
 
         $produto->delete();
 
@@ -126,14 +270,14 @@ class LojaController extends Controller
     {
         $categorias = Categoria::all();
 
-        return view('pages.categorias', [
+        return view('pages.categorias.categorias', [
             'categorias' => $categorias,
         ]);
     }
 
     public function criarCategoria()
     {
-        return view('pages.criar_categoria');
+        return view('pages.categorias.criar_categoria');
     }
 
     public function criarCategoriaPost(CategoriasRequest $request)
@@ -156,7 +300,7 @@ class LojaController extends Controller
         $categorias = Categoria::all();
         $subcategorias = Subcategoria::all();
 
-        return view('pages.editar_categoria', [
+        return view('pages.categorias.editar_categoria', [
             'categoria' => $categoria,
             'categorias' => $categorias,
             'subcategorias' => $subcategorias
@@ -187,14 +331,14 @@ class LojaController extends Controller
     {
         $subcategorias = Subcategoria::all();
 
-        return view('pages.subcategorias', [
+        return view('pages.subcategorias.subcategorias', [
             'subcategorias' => $subcategorias,
         ]);
     }
 
     public function criarSubcategoria()
     {
-        return view('pages.criar_subcategoria');
+        return view('pages.subcategorias.criar_subcategoria');
     }
 
     public function criarSubcategoriaPost(SubcategoriasRequest $request)
@@ -217,7 +361,7 @@ class LojaController extends Controller
         $categorias = Categoria::all();
         $subcategorias = Subcategoria::all();
 
-        return view('pages.editar_subcategoria', [
+        return view('pages.subcategorias.editar_subcategoria', [
             'subcategoria' => $subcategoria,
             'categorias' => $categorias,
             'subcategorias' => $subcategorias
@@ -266,6 +410,20 @@ class LojaController extends Controller
 
         // Retorna o nome do arquivo gerado
         return $nameFile;
+    }
+
+    public function excluirImagem($id, $numeroImagem)
+    {
+        $produto = Produto::find($id);
+        $campoImagem = 'imagem' . $numeroImagem;
+
+        if ($produto->$campoImagem) {
+            Storage::delete('public/imagens-produtos/' . $produto->$campoImagem);
+            $produto->$campoImagem = null;
+            $produto->save();
+        }
+
+        return redirect()->route('editar-produto', ['id' => $id])->with('message', 'Imagem excluída com sucesso.');
     }
 
 }
