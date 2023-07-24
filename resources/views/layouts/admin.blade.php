@@ -2,8 +2,8 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Mazzuli</title>
+    <meta charset="UTF-8" />
+    <title>Ponto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -57,22 +57,22 @@
                     <a href="index.html" class="logo logo-dark">
                         <span class="logo-sm">
                             {{-- <img src="{{ asset('assets/admin/images/logo-sm.png') }}" alt="" height="22"> --}}
-                            <img class="main__logo--img" src="{{ asset('assets/site/img/logo/logo.png') }}" alt="logo-img">
+                            {{-- <img class="main__logo--img" src="{{ asset('assets/admin/images/logo.png') }}" alt="logo-img"> --}}
                         </span>
                         <span class="logo-lg">
                             {{-- <img src="{{ asset('assets/admin/images/logo-dark.png') }}" alt="" height="20"> --}}
-                            <img class="main__logo--img" src="{{ asset('assets/site/img/logo/logo.png') }}" alt="logo-img">
+                            {{-- <img class="main__logo--img" src="{{ asset('assets/admin/images/logo.png') }}" alt="logo-img"> --}}
                         </span>
                     </a>
 
                     <a href="index.html" class="logo logo-light">
                         <span class="logo-sm">
                             {{-- <img src="{{ asset('assets/admin/images/logo-sm.png') }}" alt="" height="22"> --}}
-                            <img class="main__logo--img" src="{{ asset('assets/site/img/logo/logo.png') }}" alt="logo-img">
+                            {{-- <img class="main__logo--img" src="{{ asset('assets/admin/images/logo.png') }}" alt="logo-img"> --}}
                         </span>
                         <span class="logo-lg">
                             {{-- <img src="{{ asset('assets/admin/images/logo-light.png') }}" alt="" height="20"> --}}
-                            <img class="main__logo--img" src="{{ asset('assets/site/img/logo/logo.png') }}" alt="logo-img">
+                            {{-- <img class="main__logo--img" src="{{ asset('assets/admin/images/logo.png') }}" alt="logo-img" style="width: 100px; margin-left: 20px">  ESSE  --}}
                         </span>
                     </a>
                 </div>
@@ -82,7 +82,7 @@
                 </button>
 
                 <div class="d-none d-sm-block ms-2">
-                    <h4 class="page-title font-size-18">Dashboard Mazzuli</h4>
+                    <h4 class="page-title font-size-18">Bem vindo(a) {{ Auth::user()->name }}</h4>
                 </div>
 
             </div>
@@ -100,12 +100,12 @@
             <div class="dropdown d-inline-block ms-2">
                 <button type="button" class="btn header-item" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="{{ asset('assets/admin/images/users/gustavo.png') }}"
+                    <img class="rounded-circle header-profile-user" style="width: 80px" src="{{ asset('assets/admin/images/users/logo.png') }}"
                         alt="Prifile">
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="#"><i class="dripicons-user font-size-16 align-middle me-2"></i>
-                        Profile</a>
+                    {{-- <a class="dropdown-item" href="#"><i class="dripicons-user font-size-16 align-middle me-2"></i>
+                        Profile</a> --}}
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item"  href="{{ route('logout') }}"><i class="dripicons-exit font-size-16 align-middle me-2"></i>
                         Logout</a>
@@ -124,54 +124,37 @@
             <div id="sidebar-menu">
                 <!-- Left Menu Start -->
                 <ul class="metismenu list-unstyled" id="side-menu">
-                    <li class="menu-title">Utilidades</li>
 
                     <li>
                         <a href="{{ route('admin') }}">
                             <i class="dripicons-device-desktop"></i>
-                            <span>Dashboard</span>
+                            <span>Registro de ponto</span>
                         </a>
                     </li>
 
-                    {{-- <li>
-                        <a href="users.html">
-                            <i class="dripicons-user"></i>
-                            <span>Users</span>
-                        </a>
-                    </li> --}}
-
-                    {{-- <li>
-                        <a href="javascript: void(0);" class="has-arrow">
-                            <i class="dripicons-mail"></i>
-                            <span> Email </span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="email-inbox.html">Inbox</a></li>
-                            <li><a href="email-read.html">Email Read</a></li>
-                            <li><a href="email-compose.html">Email Compose</a></li>
-                        </ul>
-                    </li> --}}
-
                     <li>
-                        <a href="{{ route('categorias') }}" >
+                        <a href="{{ route('meses-index') }}" >
                             <i class="dripicons-blog"></i>
-                            <span>Categorias</span>
+                            <span>Meus meses</span>
                         </a>
                     </li>
 
-                    <li>
-                        <a href="{{ route('subcategorias') }}" >
-                            <i class="dripicons-card"></i>
-                            <span>Subcategorias</span>
-                        </a>
-                    </li>
+                    @if(Auth::user()->tipo == "Admin")
+                        <li>
+                            <a href="{{ route('funcionarios') }}" >
+                                <i class="dripicons-user"></i>
+                                <span>Funcionários</span>
+                            </a>
+                        </li>
+                    @endif
 
+                    {{--
                     <li>
-                        <a href="{{ route('produtos') }}">
-                            <i class="dripicons-suitcase"></i>
-                            <span>Produtos</span>
+                        <a href="#">
+                            <i class="dripicons-user"></i>
+                            <span>Lista de Funcionários</span>
                         </a>
-                    </li>
+                    </li> --}}
 
 
                 </ul>
@@ -186,7 +169,7 @@
             <div class="row">
                 <div class="col-12">
                     ©
-                    <script>document.write(new Date().getFullYear())</script> Mazzuli
+                    <script>document.write(new Date().getFullYear())</script> Ponto
                 </div>
             </div>
         </div>
