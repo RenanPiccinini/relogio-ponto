@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <img src="{{ asset('assets/admin/images/logo.png') }}" alt="Logo" width="150px" class="img-fluid mx-auto d-block mb-3 mt-3">
+            <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" width="150px" class="img-fluid mx-auto d-block mb-3 mt-3">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 

@@ -14,7 +14,25 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script> --}}
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/site/img/favicon.ico') }}">>
+
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+    <script src="{{ asset('assets/js/app.js') }}" defer></script>
+
+    <link rel="icon" href="{{ asset('assets/site/img/rp.jpeg') }}" />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/lightgallery.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/icons.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}" />
 </head>
 <body>
     <div id="app">

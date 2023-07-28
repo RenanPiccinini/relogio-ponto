@@ -9,31 +9,25 @@
     <meta content="Themesbrand" name="author" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
-
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script> --}}
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/site/img/favicon.ico') }}">>
 
- @vite([
-    'resources/css/app.css',
-    'resources/js/app.js',
-    'resources/assets/admin/css/bootstrap.min.css',
-    'resources/assets/admin/css/icons.min.css',
-    'resources/assets/admin/css/app.min.css',
-    'resources/assets/admin/libs/jquery/jquery.min.js',
-    'resources/assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js',
-    'resources/assets/admin/libs/metismenu/metisMenu.min.js',
-    'resources/assets/admin/libs/simplebar/simplebar.min.js',
-    //'resources/assets/admin/libs/node-waves/waves.min.js',
-    'resources/assets/admin/libs/morris.js/morris.min.js',
-    'resources/assets/admin/libs/raphael/raphael.min.js',
-    'resources/assets/admin/js/pages/dashboard.init.js',
-    'resources/assets/admin/js/app.js'
- ])
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+    <script src="{{ asset('assets/js/app.js') }}" defer></script>
 
+    <link rel="icon" href="{{ asset('assets/site/img/rp.jpeg') }}" />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/lightgallery.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/icons.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}" />
 </head>
-
 
 <body data-sidebar="dark">
 
@@ -100,7 +94,7 @@
             <div class="dropdown d-inline-block ms-2">
                 <button type="button" class="btn header-item" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" style="width: 80px" src="{{ asset('assets/admin/images/users/logo.png') }}"
+                    <img class="rounded-circle header-profile-user" style="width: 80px" src="{{ asset('assets/images/users/logo.png') }}"
                         alt="Prifile">
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
@@ -176,6 +170,15 @@
     </footer>
 
 </div>
+
+<script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/libs/metismenu/metisMenu.min.js') }}"></script>
+<script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+<script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
+<script src="{{ asset('assets/libs/morris.js/morris.min.js') }}"></script>
+<script src="{{ asset('assets/libs/raphael/raphael.min.js') }}"></script>
+<script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>
 
 </body>
 

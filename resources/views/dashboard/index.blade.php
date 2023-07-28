@@ -59,7 +59,7 @@
                     </table>
                 </div>
 
-                <form action="{{ route('fechar-mes') }}" style="margin-left: 257px" method="POST">
+                <form action="{{ route('fechar-mes') }}" style="margin-left: 138px" method="POST">
                     @csrf
                     <button class="btn btn-success">Fechar mês</button>
                 </form>
